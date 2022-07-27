@@ -1,0 +1,7 @@
+<p>meu-componente works!</p>
+<p>O atributo conta = {{ conta }} </p>
+
+<p *ngFor="let item of lista; let indice = index">
+    {{item.nome}} - {{item.idade}} 
+    <button (click)="getDados(indice)"> Enviar dados</button>
+</p>

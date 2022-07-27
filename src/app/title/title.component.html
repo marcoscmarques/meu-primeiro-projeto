@@ -1,0 +1,107 @@
+<h3>{{ title }}</h3>
+<hr>
+
+<h2>Interpolation</h2>
+<p>Este exemplo foi {{ exemploInterpolation }}</p>
+<p>Se temos {{ umValor}}  e somar 1, teremos {{ umValor + 1 }}, 
+    sendo assim é verdadeiro dizer que o resultado é 2? R.: {{ umValor + 1 == 2 }} </p>
+<hr>
+
+<h2>Property binding</h2>
+<button [disabled] = "umaVariavelBoleana">Button</button>
+<img [src] = "umaImagem">
+<hr>
+
+<h2>Event binding</h2>
+<button (click)="umAlerta()">Evento</button>
+<br><br>
+<button (click)="umAlertaComParametro('oi')">Evento com parâmetro</button>
+<br><br>
+<button (click)="umAlertaComParametroEvento($event)">Evento com parâmetro tipo evento</button>
+<br><br>
+<div (mousemove)="mouseMove($event)" style="background: blue; width: 200px; height: 200px"></div>
+{{ posicao.x}} - {{ posicao.y}}
+<hr>
+
+<h2>Two-way binding</h2>
+<input [(ngModel)]="title">
+<br>
+{{title}}
+<hr>
+
+<h2>Diretiva estrutural ngIf - Utilizado para criar e destruir componentes</h2>
+<p *ngIf="condicaoClick">É verdade</p>
+<p *ngIf="!condicaoClick">É falso</p>
+<button (click)="onClick()">Clique</button>
+<hr>
+
+<h2>Diretiva estrutural ngFor - Utilizado para iterar componentes</h2>
+<ul>
+    <li *ngFor="let item of lista; let indice = index;" (click)="apagaItem(indice)">
+        [{{ indice }}] - {{ item.nome }} - idade: {{ item.idade}} anos
+    </li>
+</ul>
+<button (click)="adicionaItem()">Adicionar item</button> 
+<hr>
+
+<h2>Diretiva estrutural ngSwitch - Utilizado para trocar de componentes conforme algumas condições</h2>
+Menu: <input type="text" [(ngModel)]="menu">
+<div [ngSwitch]="menu">
+    <p *ngSwitchCase="'item1'">
+        Selecionado item 1
+    </p>
+    <p *ngSwitchCase="'item2'">
+        Selecionado item 2
+    </p>
+    <p *ngSwitchCase="'item3'">
+        Selecionado item 3
+    </p>
+    <p *ngSwitchCase="'item'">
+        Selecionado item 
+    </p>
+    <p *ngSwitchDefault>
+        Nada foi selecionado
+    </p>
+</div>
+<hr>
+
+<h2>Diretiva de atributos ngClass / ngStyle</h2>
+<p [ngClass] = "{'ativo': habilitado, 'naoAtivo': !habilitado}"> Um texto utilizando ngClass</p>
+<p [ngStyle] = "{'background': cor, 'font-size': tamanho}"> Um texto utilizando ngStyle</p>
+<hr>
+
+<h2>Diretiva de atributos ngModel</h2>
+Tamanho da fonte: <input [(ngModel)] = "tamanho">
+<hr>
+
+<h2>Diretiva de atributos ng-template</h2>
+<ng-template ngFor let-item [ngForOf]="lista">
+    <p>{{item.nome}}</p>
+</ng-template>
+<ng-template ngIf="true">
+    <p>exemplo utilizando ng-template com  ngIf</p>
+</ng-template>
+<hr>
+
+<h2>Pipes</h2>
+{{ data | date: 'dd/MM/yyyy'}}
+<ng-template ngFor let-item [ngForOf]="lista">
+    <p>{{item.nome | uppercase}}</p>
+</ng-template>
+<hr>
+
+<h2>Módulo</h2>
+<app-meu-componente></app-meu-componente>
+<hr>
+
+
+<h2>Local Storage</h2>
+<ul>
+    <li *ngFor="let item of novaLista; let indice = index;" (click)="apagaItemLocalStorage(indice)">
+        [{{ indice }}] - {{ item.nome }} - idade: {{ item.idade}} anos
+    </li>
+</ul>
+<button (click)="adicionaItemLocalStorage()">Adicionar item</button>
+<button (click)="apagaNovaListaLocalStorage()">Remove nova lista</button>
+<button (click)="removeLocalStorage()">Remove local storage</button>
+<hr>
